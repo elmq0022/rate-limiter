@@ -15,7 +15,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /unlimited", handler)
-	mux.HandleFunc("GET /token-bucket", middleware.TokenBucket(handler))
+	mux.HandleFunc("GET /token-bucket", middleware.TokenBucketMW(handler))
 	mux.HandleFunc("GET /window", middleware.FixedWindow(handler))
 	mux.HandleFunc("GET /sliding-window", middleware.SlidingWindowCounter(handler))
 
