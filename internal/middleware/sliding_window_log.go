@@ -40,7 +40,7 @@ func (s *SlidingWindowLog) Allow() bool {
 	return false
 }
 
-var swl = SlidingWindowLog{
+var swl = &SlidingWindowLog{
 	maxRequests: 100,
 	requestLog:  []time.Time{},
 	logDuration: 100 * time.Second,

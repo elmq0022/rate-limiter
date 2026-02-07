@@ -33,7 +33,7 @@ func (fw *FixedWindow) Allow() bool {
 	return false
 }
 
-var fixWin = FixedWindow{
+var fixWin = &FixedWindow{
 	endTime:         time.Now().Add(100 * time.Second),
 	windowLength:    100 * time.Second,
 	maxRequests:     100,
