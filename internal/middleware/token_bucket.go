@@ -48,8 +48,8 @@ func TokenBucketMW(h http.HandlerFunc) http.HandlerFunc {
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusTooManyRequests)
 			json.NewEncoder(w).Encode(map[string]string{"msg": "Too Many Requests"})
-		} else {
-			h(w, r)
+			return
 		}
+		h(w, r)
 	}
 }
