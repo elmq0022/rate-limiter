@@ -17,7 +17,8 @@ func main() {
 	mux.HandleFunc("GET /unlimited", handler)
 	mux.HandleFunc("GET /token-bucket", middleware.TokenBucketMW(handler))
 	mux.HandleFunc("GET /fixed-window", middleware.FixedWindowMW(handler))
-	mux.HandleFunc("GET /sliding-window", middleware.SlidingWindowCounterMW(handler))
+	mux.HandleFunc("GET /sliding-window-log", middleware.SlidingWindowLogMW(handler))
+	mux.HandleFunc("GET /sliding-window-counter", middleware.SlidingWindowCounterMW(handler))
 
 	if err := http.ListenAndServe(address, mux); err != nil {
 		panic("could not serve")
