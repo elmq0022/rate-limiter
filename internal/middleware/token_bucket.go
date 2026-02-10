@@ -27,7 +27,7 @@ func (tb *TokenBucket) Allow() bool {
 	defer tb.mu.Unlock()
 	tb.refill()
 
-	if tb.tokens > 0 {
+	if tb.tokens > 1 {
 		tb.tokens--
 		return true
 	}
